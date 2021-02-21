@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>Vue Test</title>
+</head>
+
+<body>
+    <div id="app">
+        <el-container>
+            <el-aside width="200px">
+                <el-menu :default-openeds="['1']" :default-active="$route.path" @select="handleSelect">
+                    <el-menu-item index="">
+                        <template slot="title"><i></i>菜单1</template>
+                    </el-menu-item>
+                    <el-menu-item index="/menu-2-index">
+                        <template slot="title"><i></i>菜单2</template>
+                    </el-menu-item>
+                    <el-menu-item index="/menu-3-index">
+                        <template slot="title"><i></i>菜单3</template>
+                    </el-menu-item>
+                </el-menu>
+            </el-aside>
+            <el-container>
+                <router-view></router-view>
+            </el-container>
+        </el-container>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
+</html>
