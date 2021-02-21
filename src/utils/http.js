@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '@/store'
 import QS from 'qs'
-import {Toast} from "vant";
+import { Toast } from "vant";
 import router from "@/router";
 
 /**
@@ -9,7 +9,8 @@ import router from "@/router";
  * TIME_OUT, BASE_URL
  */
 export const timeout = 5000;    // 请求超时时间
-export const baseURL = 'http://127.0.0.1:8888';   // 引入全局url
+// export const baseURL = 'http://127.0.0.1:8888';   // 引入全局url
+export const baseURL = '/api';
 
 // 创建axios实例
 const instance = axios.create({
@@ -37,9 +38,9 @@ instance.interceptors.request.use(
 // 封装响应拦截，判断token是否过期
 instance.interceptors.response.use(
   response => {
-    let {data} = response;
+    let { data } = response;
     // refreshToken过期,重新登录
-    if (data.code === 1010){
+    if (data.code === 1010) {
       // 提示认证过期
       Toast(data.msg);
       // 删除本地token
@@ -55,7 +56,7 @@ instance.interceptors.response.use(
       refreshToken(response);
       return Promise.resolve(response.data)
     }
-    if (data.code !== 200){
+    if (data.code !== 200) {
       Toast(data.msg);
     } else {
       return Promise.resolve(response.data)
@@ -139,7 +140,7 @@ class http {
   }
 
   static async get(url, params) {
-    return await instance.get(url, {params: params})
+    return await instance.get(url, { params: params })
   }
 
   static async post(url, params) {
@@ -151,7 +152,7 @@ class http {
   }
 
   static async delete(url, params) {
-    return await instance.delete(url, {params: QS.stringify(params)})
+    return await instance.delete(url, { params: QS.stringify(params) })
   }
 
   static async upload(url, params) {
@@ -160,7 +161,7 @@ class http {
       formData.append(key, params[key])
     });
     let config = {
-      headers: {"Content-Type": "multipart/form-data"}
+      headers: { "Content-Type": "multipart/form-data" }
     };
     return await instance.post(url, formData, config)
   }

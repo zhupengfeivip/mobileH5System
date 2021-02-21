@@ -9,15 +9,15 @@ const Home = () => import('../views/home/Home.vue');
 const Travel = () => import('../views/travel/Travel.vue');
 const News = () => import('../views/news/News.vue');
 const Mine = () => import('../views/mine/Mine.vue');
-const Login = () => import(/* webpackChunkName: "group-login" */ '../views/login/Login.vue');
-const LoginByCode = () => import(/* webpackChunkName: "group-login" */ '../views/login/LoginByCode.vue');
-const LoginByPwd = () => import(/* webpackChunkName: "group-login" */ '../views/login/LoginByPwd.vue');
-const RetrievePwd = () => import(/* webpackChunkName: "group-login" */ '../views/login/RetrievePwd.vue');
+const Login = () => import('../views/login/Login.vue');
+const LoginByCode = () => import('../views/login/LoginByCode.vue');
+const LoginByPwd = () => import('../views/login/LoginByPwd.vue');
+const RetrievePwd = () => import('../views/login/RetrievePwd.vue');
 
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/login2'
   },
   {
     path: '/home',
@@ -44,6 +44,14 @@ const routes = [
   {
     path: '/login',
     component: Login,
+    meta: {
+      keepAlive: true,
+      requireAuth: false
+    }
+  },
+  {
+    path: '/login2',
+    component: () => import('../views/login/login2.vue'),
     meta: {
       keepAlive: true,
       requireAuth: false
@@ -83,7 +91,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // 需要权限校验
-  if(to.meta.requireAuth === undefined && store.state.token === null){
+  if (to.meta.requireAuth === undefined && store.state.token === null) {
     store.commit('toggleTabbarShow', false);
     next('/login');
   }
