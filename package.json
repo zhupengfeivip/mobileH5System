@@ -22,6 +22,8 @@
     "@vue/cli-plugin-router": "^4.1.0",
     "@vue/cli-plugin-vuex": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
+    "less": "^4.1.1",
+    "less-loader": "^7.3.0",
     "vue-template-compiler": "^2.6.10"
   }
 }

@@ -1,69 +1,67 @@
 <template>
-  <van-form>
-    <div id="login">
-      <div class="loginBox" @click="changeImage(3)">
-        <div class="auth-form">
-          <div class="panfish">
-            <img :src="imageURL" alt="" />
-          </div>
-          <div style="text-align: center; padding-bottom: 10px">
-            <span>五维度旅游服务质量评价管理系统</span>
-          </div>
-          <!-- 账号密码登录 -->
-          <van-cell-group>
-            <van-field
-              v-model="login_userName"
-              clearable
-              label="手机号"
-              maxlength="11"
-              type="number"
-              label-width="4em"
-              label-align="right"
-              colon
-              class="username"
-              @click.stop="changeImage(0)"
-              placeholder="请输入手机号"
-            />
-            <van-field
-              v-model="login_password"
-              clearable
-              label="验证码"
-              maxlength="11"
-              type="number"
-              label-width="4em"
-              label-align="right"
-              colon
-              placeholder="请输入短信验证码"
-              @click.stop="changeImage(1)"
-            >
-              <template #button>
-                <van-button size="small" type="info" @click="sendVerifyCode">{{
-                  verifyButtonText
-                }}</van-button>
-              </template>
-            </van-field>
-          </van-cell-group>
-          <van-button
-            round
-            type="info"
-            size="large"
-            style="margin-top: 1rem"
-            @click="login"
-            >登录</van-button
-          >
+  <div id="login">
+    <div class="loginBox" @click="changeImage(3)">
+      <div class="auth-form">
+        <div class="panfish">
+          <img :src="imageURL" alt="" />
         </div>
+        <div style="text-align: center; padding-bottom: 10px">
+          <span>五维度旅游服务质量评价管理系统</span>
+        </div>
+        <!-- 账号密码登录 -->
+        <van-cell-group>
+          <van-field
+            v-model="login_userName"
+            clearable
+            label="手机号"
+            maxlength="11"
+            type="number"
+            label-width="4em"
+            label-align="right"
+            colon
+            class="username"
+            @click.stop="changeImage(0)"
+            placeholder="请输入手机号"
+          />
+          <van-field
+            v-model="login_password"
+            clearable
+            label="验证码"
+            maxlength="11"
+            type="number"
+            label-width="4em"
+            label-align="right"
+            colon
+            placeholder="请输入短信验证码"
+            @click.stop="changeImage(1)"
+          >
+            <template #button>
+              <van-button size="small" type="info" @click="sendVerifyCode">{{
+                verifyButtonText
+              }}</van-button>
+            </template>
+          </van-field>
+        </van-cell-group>
+        <van-button
+          round
+          type="info"
+          size="large"
+          style="margin-top: 1rem"
+          @click="login"
+          >登录</van-button
+        >
       </div>
     </div>
-  </van-form>
+  </div>
 </template>
 
 <script type="text/javascript">
 // 引入Vant的组件
 import { Toast } from 'vant'
 // 引入API调用接口
-import http from "@/utils/http";
+// import http from "@/utils/http";
 // 引入vuex
-import { mapActions } from 'vuex'
+// import { mapActions } from 'vuex'
 // import md5 from 'js-md5';
 
 export default {
@@ -82,7 +80,7 @@ export default {
       smsCaptcha: '',               // 短信验证码
       isShowSMSLogin: true,         // 是否短信登录
       switchLoginMsg: '账号密码登录',
-      imageURL: require('./../images/login/normal.png'),
+      imageURL: require('../../assets/image/login/normal.png'),
       smsCaptchaResult: null,
       userInfo: null,
       remainSec: 0,
@@ -112,15 +110,15 @@ export default {
   },
   methods: {
     // 0.mapActions 同步用户信息
-    ...mapActions(['syncuserInfo']),
+    // ...mapActions(['syncuserInfo']),
     // 2.切换萌猫图片
     changeImage(index) {
       if (index == 0) {
-        this.imageURL = require('./../images/login/greeting.png')
+        this.imageURL = require('../../assets/image/login/greeting.png')
       } else if (index == 1) {
-        this.imageURL = require('./../images/login/blindfold.png')
+        this.imageURL = require('../../assets/image/login/blindfold.png')
       } else {
-        this.imageURL = require('./../images/login/normal.png')
+        this.imageURL = require('../../assets/image/login/normal.png')
       }
     },
     // 5.登录
@@ -156,7 +154,7 @@ export default {
         this.$refs.login_userName.focus()
       }
       //发送验证码
-      http.post('/v1/send/verify/code', { phone: this.login_userName }).then(() => {
+      this.$http.post('/v1/send/verify/code', { phone: this.login_userName }).then(() => {
         this.remainSec = 60
         setTimeout(this.checkVerifyCodeStatus, 1000)
       })
@@ -180,6 +178,7 @@ export default {
   }
 }
 </script>
+
 <style lang="less" scoped>
 #login {
   position: fixed;
@@ -187,7 +186,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("../images/login/back2.jpg");
+  background: url("../../assets/image/login/back2.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-attachment: fixed;
@@ -208,7 +207,7 @@ export default {
       padding-top: 50px;
       width: 26.5rem;
       max-width: 90%;
-      font-size: 1.167rem;
+      font-size: 0.5rem;
       background-color: #fff;
       border-radius: 8px;
       box-sizing: border-box;
@@ -244,3 +243,5 @@ export default {
   color: grey;
 }
 </style>
+
+

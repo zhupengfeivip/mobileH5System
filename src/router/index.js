@@ -4,16 +4,6 @@ import store from '@/store'
 
 Vue.use(VueRouter);
 
-// 路由懒加载
-const Home = () => import('../views/home/Home.vue');
-const Travel = () => import('../views/travel/Travel.vue');
-const News = () => import('../views/news/News.vue');
-const Mine = () => import('../views/mine/Mine.vue');
-const Login = () => import('../views/login/Login.vue');
-const LoginByCode = () => import('../views/login/LoginByCode.vue');
-const LoginByPwd = () => import('../views/login/LoginByPwd.vue');
-const RetrievePwd = () => import('../views/login/RetrievePwd.vue');
-
 const routes = [
   {
     path: '/',
@@ -21,29 +11,29 @@ const routes = [
   },
   {
     path: '/home',
-    component: Home,
+    component: import('../views/home/Home.vue'),
     meta: {
       requireAuth: false
     }
   },
   {
     path: '/travel',
-    component: Travel,
+    component: import('../views/travel/Travel.vue'),
     meta: {
       requireAuth: false
     }
   },
   {
     path: '/news',
-    component: News
+    component: import('../views/news/News.vue')
   },
   {
     path: '/mine',
-    component: Mine
+    component: import('../views/mine/Mine.vue')
   },
   {
     path: '/login',
-    component: Login,
+    component: import('../views/login/Login.vue'),
     meta: {
       keepAlive: true,
       requireAuth: false
@@ -60,7 +50,7 @@ const routes = [
   {
     path: '/loginByCode',
     name: '/loginByCode',
-    component: LoginByCode,
+    component: import('../views/login/LoginByCode.vue'),
     meta: {
       requireAuth: false
     }
@@ -68,7 +58,7 @@ const routes = [
   {
     path: '/loginByPwd',
     name: '/loginByPwd',
-    component: LoginByPwd,
+    component: import('../views/login/LoginByPwd.vue'),
     meta: {
       requireAuth: false
     }
@@ -76,7 +66,7 @@ const routes = [
   {
     path: '/retrievePwd',
     name: '/retrievePwd',
-    component: RetrievePwd,
+    component: import('../views/login/RetrievePwd.vue'),
     meta: {
       requireAuth: false
     }
@@ -90,7 +80,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // 需要权限校验
+  // 需要权限校验的校验是否已登录，未登录时跳转登录页面
   if (to.meta.requireAuth === undefined && store.state.token === null) {
     store.commit('toggleTabbarShow', false);
     next('/login');
