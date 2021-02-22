@@ -1,5 +1,10 @@
 # 移动端后台管理系统框架
 
+提示以下错误时，请重新安装less,less-loader,用低版本的安装，原因是因为版本不兼容造成的。
+
+ Syntax Error: TypeError: this.getOptions is not a function
+
+
 vue的页面，本地可以，线上不能使用。所以以下页面打不开。
 
 
