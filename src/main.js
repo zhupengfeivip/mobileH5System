@@ -33,3 +33,10 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app');
+
+// new Vue({
+//   router,
+//   store,
+//   el: '#app',
+//   render: h => h(App)
+// });

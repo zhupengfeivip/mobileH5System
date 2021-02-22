@@ -144,7 +144,7 @@ export default {
             this.errMsg = res.msg
           } else {
             this.$store.commit('login', res.data);
-            this.$router.push('/home');
+            this.$router.push('/show');
           }
         });
 

@@ -7,40 +7,40 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/login2'
   },
   {
     path: '/show',
-    component: import('../views/show.vue'),
+    component: require('../views/show.vue').default,
     meta: {
       requireAuth: false
     }
   },
   {
     path: '/home',
-    component: import('../views/home/Home.vue'),
+    component: require('../views/home/Home.vue').default,
     meta: {
       requireAuth: false
     }
   },
   {
     path: '/travel',
-    component: import('../views/travel/Travel.vue'),
+    component: require('../views/travel/Travel.vue').default,
     meta: {
       requireAuth: false
     }
   },
   {
     path: '/news',
-    component: import('../views/news/News.vue')
+    component: require('../views/news/News.vue').default
   },
   {
     path: '/mine',
-    component: import('../views/mine/Mine.vue')
+    component: require('../views/mine/Mine.vue').default
   },
   {
     path: '/login',
-    component: import('../views/login/Login.vue'),
+    component: require('../views/login/Login.vue').default,
     meta: {
       keepAlive: true,
       requireAuth: false
@@ -48,7 +48,7 @@ const routes = [
   },
   {
     path: '/login2',
-    component: () => import('../views/login/login2.vue'),
+    component: require('../views/login/login2.vue').default,
     meta: {
       keepAlive: true,
       requireAuth: false
@@ -57,7 +57,7 @@ const routes = [
   {
     path: '/loginByCode',
     name: '/loginByCode',
-    component: import('../views/login/LoginByCode.vue'),
+    component: require('../views/login/LoginByCode.vue').default,
     meta: {
       requireAuth: false
     }
@@ -65,7 +65,7 @@ const routes = [
   {
     path: '/loginByPwd',
     name: '/loginByPwd',
-    component: import('../views/login/LoginByPwd.vue'),
+    component: require('../views/login/LoginByPwd.vue').default,
     meta: {
       requireAuth: false
     }
@@ -73,7 +73,7 @@ const routes = [
   {
     path: '/retrievePwd',
     name: '/retrievePwd',
-    component: import('../views/login/RetrievePwd.vue'),
+    component: require('../views/login/RetrievePwd.vue').default,
     meta: {
       requireAuth: false
     }
