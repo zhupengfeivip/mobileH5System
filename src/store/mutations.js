@@ -1,17 +1,17 @@
 import router from "@/router";
-import {Toast} from "vant";
+import { Toast } from "vant";
 
 export default {
   /**
    * 退出登录
    */
-  logout(state){
+  logout(state) {
     state.token = null;
     // 清除token
     localStorage.removeItem('token');
     // 跳转到登录页面
     router.replace('/')
-        .catch(err => console.warn(err));
+      .catch(err => console.warn(err));
     Toast('退出成功')
   },
 
@@ -20,18 +20,18 @@ export default {
    * @param state
    * @param token
    */
-  login(state, data){
+  login(state, data) {
     state.token = data.token;
     // 切换tabbar为显示状态
-    this.commit('toggleTabbarShow', true);
+    // this.commit('toggleTabbarShow', true);
     // 保存token到localStorage
     localStorage.setItem('token', data.token);
     // 保存refreshToken到localStorage
-    localStorage.setItem('refreshToken', data.refreshToken);
+    // localStorage.setItem('refreshToken', data.refreshToken);
     // 跳转到首页
-    router.replace('/')
-        .catch(err => console.warn(err));
-    Toast('登录成功');
+    // router.replace('/')
+    //   .catch(err => console.warn(err));
+    // Toast('登录成功');
   },
 
   /**
@@ -39,7 +39,7 @@ export default {
    * @param state
    * @param booleanVal
    */
-  toggleTabbarShow(state, booleanVal){
+  toggleTabbarShow(state, booleanVal) {
     state.tabbarShow = booleanVal
   },
 
@@ -48,7 +48,7 @@ export default {
    * @param state
    * @param phone
    */
-  updatePhone(state, phone){
+  updatePhone(state, phone) {
     state.phone = phone;
     localStorage.setItem("phone", phone)
   },
@@ -58,7 +58,7 @@ export default {
    * @param state
    * @param token
    */
-  updateToken(state, data){
+  updateToken(state, data) {
     state.token = data.token;
     localStorage.setItem("token", data.token)
     localStorage.setItem("refreshToken", data.refreshToken)
@@ -70,7 +70,7 @@ export default {
    * @param token
    * @param refreshToken
    */
-  deleteToken(state){
+  deleteToken(state) {
     state.token = null;
     localStorage.removeItem("token")
     localStorage.removeItem("refreshToken")

@@ -2,8 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import '@/assets/css/reset.css'
-import '@/assets/css/border.css'
+// import '@/assets/css/reset.css'
+// import '@/assets/css/border.css'
 
 // 解决移动端点击延迟200ms的问题
 import fastCLick from 'fastclick'

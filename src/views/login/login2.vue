@@ -58,6 +58,7 @@
 <script type="text/javascript">
 // 引入Vant的组件
 import { Toast } from 'vant'
+import { sendLoginCode, loginByCode } from "@/api";
 // 引入API调用接口
 // import http from "@/utils/http";
 // 引入vuex
@@ -69,8 +70,8 @@ export default {
     return {
       countDown: 0,                 // 倒计时
       active: 0,
-      login_userName: '',            // 用户名
-      login_password: '',           // 用户密码
+      login_userName: '13523025454',            // 用户名
+      login_password: '1234',           // 用户密码
       login_phone: '',              // 手机号码
 
       register_userName: '',        // 注册用户名
@@ -126,31 +127,34 @@ export default {
       // 5.2 账号密码登录
       // 5.2.1 验证输入框
       if (this.login_userName.length < 1) {
-        Toast({ message: '手机号不能为空', duration: 800 });
+        this.$toast({ message: '手机号不能为空', duration: 800 });
         return;
       } else if (!this.phoneRegex(this.login_userName)) {
-        Toast({ message: '请输入正确的手机号', duration: 800 });
+        this.$toast({ message: '请输入正确的手机号', duration: 800 });
         return;
       } else if (this.login_password.length < 1) {
-        Toast({ message: '密码不能为空', duration: 800 });
+        this.$toast({ message: '密码不能为空', duration: 800 });
         return;
       }
 
       // 5.2.2 请求后台
-      await this.$store.dispatch("user/login", {
-        phone: this.login_userName, verifyCode: this.login_password
-      });
-      //   console.log(ref);
-      //   this.syncuserInfo(ref.data);
-      //   this.$router.back();
-      this.$router.push({ name: 'home' });
+      loginByCode({ phone: this.login_userName, verifyCode: this.login_password })
+        .then(res => {
+          if (res.code !== 200) {
+            this.errMsg = res.msg
+          } else {
+            this.$store.commit('login', res.data);
+            this.$router.push('/home');
+          }
+        });
+
     },
 
     /**
      * 发送验证码
      */
     sendVerifyCode() {
-      if (this.login_userName === '' || this.login_userNamelength != 11) {
+      if (this.login_userName === '' || this.login_userName.length != 11) {
         this.$refs.login_userName.focus()
       }
       //发送验证码
@@ -207,7 +211,7 @@ export default {
       padding-top: 50px;
       width: 26.5rem;
       max-width: 90%;
-      font-size: 0.5rem;
+      font-size: 1.167rem;
       background-color: #fff;
       border-radius: 8px;
       box-sizing: border-box;

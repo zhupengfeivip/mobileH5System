@@ -7,7 +7,14 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    redirect: '/login2'
+    redirect: '/home'
+  },
+  {
+    path: '/show',
+    component: import('../views/show.vue'),
+    meta: {
+      requireAuth: false
+    }
   },
   {
     path: '/home',
