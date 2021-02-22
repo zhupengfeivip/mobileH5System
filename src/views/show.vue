@@ -6,7 +6,7 @@
         title="登录界面二"
         value="登录和验证码不一个页面"
         is-link
-        to="/login/login"
+        to="login"
       />
     </van-cell-group>
     <van-cell-group title="分组1">
