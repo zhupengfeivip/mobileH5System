@@ -8,7 +8,7 @@
 所以就在网上找移动端的后台管理系统，发现并没有，所以就想着整理一个，方便以后使用。
 
 
-[在线预览页面效果](https://htmlpreview.github.io/?https://github.com/zhupengfeivip/vue-mobile-login-demo1/master/public/login1.html)
+[在线预览页面效果](http://47.93.136.161/mobileH5System)
 
 
 ## 项目配置
