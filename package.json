@@ -1,7 +1,7 @@
 {
-  "name": "thumb-vue",
+  "name": "mhs",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
@@ -25,5 +25,9 @@
     "less": "^4.1.1",
     "less-loader": "^7.3.0",
     "vue-template-compiler": "^2.6.10"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/zhupengfeivip/mobileH5System.git",
+  "author": "zhupengfei <zhupengfeivip@163.com>",
+  "license": "MIT"
 }

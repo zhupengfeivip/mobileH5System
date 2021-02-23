@@ -1,7 +1,17 @@
 <template>
   <div>
+    <van-notice-bar
+      wrapable
+      :scrollable="false"
+      text="本页页仅展示后台系统用到的相关功能，您可以根据您的需要选择您用到的功能。"
+    />
     <van-cell-group title="登录界面">
-      <van-cell title="登录界面一" value="登录和验证码一个页面" />
+      <van-cell
+        title="登录界面一"
+        value="登录和验证码一个页面"
+        is-link
+        to="login2"
+      />
       <van-cell
         title="登录界面二"
         value="登录和验证码不一个页面"
@@ -9,8 +19,8 @@
         to="login"
       />
     </van-cell-group>
-    <van-cell-group title="分组1">
-      <van-cell title="单元格" value="内容" />
+    <van-cell-group title="系统管理">
+      <van-cell title="操作员管理" value="内容" is-link to="login" />
     </van-cell-group>
   </div>
 </template>

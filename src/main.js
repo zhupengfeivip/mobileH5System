@@ -21,6 +21,9 @@ Vue.use(Tabbar).use(TabbarItem).use(NavBar).use(Tab).use(Tabs).use(Grid).use(Gri
   .use(DropdownItem).use(Switch).use(Button).use(List).use(Cell).use(CellGroup).use(PullRefresh).use(Row).use(Col)
   .use(Field).use(ActionSheet).use(Icon).use(Image).use(Toast);
 
+import { NoticeBar } from 'vant';
+Vue.use(NoticeBar);
+
 Vue.config.productionTip = false;
 
 Vue.prototype.$http = http;
