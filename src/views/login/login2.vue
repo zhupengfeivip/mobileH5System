@@ -57,8 +57,8 @@
 
 <script type="text/javascript">
 // 引入Vant的组件
-import { Toast } from 'vant'
-import { sendLoginCode, loginByCode } from "@/api";
+// import { Toast } from 'vant'
+import { loginByCode } from "@/api";
 // 引入API调用接口
 // import http from "@/utils/http";
 // 引入vuex

@@ -24,6 +24,26 @@ Vue.use(Tabbar).use(TabbarItem).use(NavBar).use(Tab).use(Tabs).use(Grid).use(Gri
 import { NoticeBar } from 'vant';
 Vue.use(NoticeBar);
 
+import { Pagination } from 'vant';
+Vue.use(Pagination);
+
+import { Form } from 'vant';
+Vue.use(Form);
+
+import { Popup } from 'vant';
+Vue.use(Popup);
+
+import { Picker } from 'vant';
+Vue.use(Picker);
+
+import { Swipe, SwipeItem } from 'vant';
+Vue.use(Swipe);
+Vue.use(SwipeItem);
+// 5.图片懒加载
+import { Lazyload } from 'vant'
+Vue.use(Lazyload)
+
+
 Vue.config.productionTip = false;
 
 Vue.prototype.$http = http;
@@ -36,10 +56,3 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app');
-
-// new Vue({
-//   router,
-//   store,
-//   el: '#app',
-//   render: h => h(App)
-// });

@@ -38,7 +38,7 @@
 import { Toast } from 'vant'
 
 export default {
-  name: 'Home',
+  name: 'list1',
   data() {
     return {
       list: [],
@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     onLoad() {
-      this.$http.get("/user")
+      this.$http.post("/user", {})
         .then(res => {
           if (res.code === 200) {
             if (this.count !== 0) {

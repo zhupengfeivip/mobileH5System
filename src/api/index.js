@@ -12,4 +12,12 @@ export const loginByPwd = (params) => http.post('/login/password', params);
 export const modifyPassword = (params) => http.put('/login/modifyPassword', params);
 
 
+export const getDeviceList = (params) => http.post('/get/device/list', params);
+
+export const getDeviceDetail = (params) => http.post('/get/device/detail', params);
+
+
+
+
+
 

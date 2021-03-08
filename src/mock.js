@@ -39,7 +39,7 @@ Mock.mock('/api/v1/get/user/info/by/token', 'post', function () {
     return { code: 20000, msg: '', data: { token: "aabbcc", refreshToken: 'aabbcc' } }
 })
 
-Mock.mock('/user', 'get', function () {
+Mock.mock('/api/user', 'post', function () {
     let list = []
     for (let i = 0; i < 10; i++) {
         list.push({
@@ -53,8 +53,26 @@ Mock.mock('/user', 'get', function () {
     return { code: 200, msg: '', data: list }
 })
 
+Mock.mock('/api/get/device/list', 'post', function () {
+    let list = []
+    for (let i = 0; i < 10; i++) {
+        list.push({
+            id: i + 1,
+            deviceName: '朱鹏飞',
+            createdAt: '2020-01-01',
+        })
+    }
+    return { code: 200, msg: '', data: { total: 100, pageTotal: 10, items: list } }
+})
 
-
-
+Mock.mock('/api/get/device/detail', 'post', function () {
+    let data = {
+        deviceName: 'test',
+        imme: '1111111',
+        deviceTypeId: 1,
+        companyId: 1,
+    }
+    return { code: 200, msg: '', data: data }
+})
 
 

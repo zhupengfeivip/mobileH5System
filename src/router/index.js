@@ -10,6 +10,7 @@ const routes = [
     redirect: '/login2'
   },
   {
+    name: 'show',
     path: '/show',
     component: require('../views/show.vue').default,
     meta: {
@@ -17,6 +18,7 @@ const routes = [
     }
   },
   {
+    name: 'home',
     path: '/home',
     component: require('../views/home/Home.vue').default,
     meta: {
@@ -26,6 +28,30 @@ const routes = [
   {
     path: '/travel',
     component: require('../views/travel/Travel.vue').default,
+    meta: {
+      requireAuth: false
+    }
+  },
+  {
+    name: 'list1',
+    path: '/list1',
+    component: require('../views/list/index1.vue').default,
+    meta: {
+      requireAuth: false
+    }
+  },
+  {
+    name: 'list2',
+    path: '/list2',
+    component: require('../views/list/index2.vue').default,
+    meta: {
+      requireAuth: false
+    }
+  },
+  {
+    name: 'list2_edit',
+    path: '/list2_edit',
+    component: require('../views/list/edit2.vue').default,
     meta: {
       requireAuth: false
     }
@@ -56,7 +82,7 @@ const routes = [
   },
   {
     path: '/loginByCode',
-    name: '/loginByCode',
+    name: 'loginByCode',
     component: require('../views/login/LoginByCode.vue').default,
     meta: {
       requireAuth: false
@@ -64,7 +90,7 @@ const routes = [
   },
   {
     path: '/loginByPwd',
-    name: '/loginByPwd',
+    name: 'loginByPwd',
     component: require('../views/login/LoginByPwd.vue').default,
     meta: {
       requireAuth: false
@@ -72,7 +98,7 @@ const routes = [
   },
   {
     path: '/retrievePwd',
-    name: '/retrievePwd',
+    name: 'retrievePwd',
     component: require('../views/login/RetrievePwd.vue').default,
     meta: {
       requireAuth: false

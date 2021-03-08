@@ -1,96 +1,95 @@
 <template>
-  <div style="padding: 20px;">
-    <div class="title">用户列表：</div>
-    <van-divider></van-divider>
-    <van-pull-refresh v-model="loading" @refresh="onLoad">
-      <van-list
-          v-model="loading"
-          :finished="finished"
-          finished-text="没有更多了"
-          @load="onLoad"
-      >
-        <div v-for="item in list" :key="item.userId">
-          <van-row gutter="20">
-            <van-col span="8">
-              <van-image width="80" height="80" :src="item.avatar"></van-image>
-              <van-divider></van-divider>
-            </van-col>
-            <van-col span="16">
-              <van-row gutter="15">
-                <van-col span="16">{{ item.name === null ? 'null' : item.name }}</van-col>
-                <van-col span="8">{{ item.sex === 0 ? '男' : '女' }}</van-col>
-              </van-row>
-              <van-divider></van-divider>
-              <van-row type="flex" justify="space-between">
-                <van-col span="6">{{ item.phone }}</van-col>
-              </van-row>
-            </van-col>
-          </van-row>
-        </div>
-      </van-list>
-    </van-pull-refresh>
-  </div>
+  <van-form>
+    <van-swipe class="my-swipe" :autoplay="3000">
+      <van-swipe-item v-for="(image, index) in images" :key="index">
+        <img v-lazy="image" />
+      </van-swipe-item>
+    </van-swipe>
+    <van-cell-group>
+      <van-cell
+        title="监控中心"
+        icon="browsing-history-o"
+        value="实时查看设备状态"
+        is-link
+        to="monit"
+      />
+      <van-cell
+        title="客户管理"
+        icon="manager-o"
+        value="管理客户信息"
+        is-link
+        to="company"
+      />
+      <van-cell
+        title="操作员管理"
+        icon="user-o"
+        value="管理操作员"
+        is-link
+        to="operator"
+      />
+      <van-cell
+        title="设备管理"
+        icon="idcard"
+        value="管理设备信息"
+        is-link
+        to="device"
+      />
+      <van-cell
+        title="修改密码"
+        icon="passed"
+        value="修改当前用户密码"
+        is-link
+        to="modify_operator_pwd"
+      />
+    </van-cell-group>
+  </van-form>
 </template>
 
 <script>
-import {Toast} from 'vant'
+// import { } from 'vant'
+// import { getInfo } from '../../src/utils/api.js'
+// import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Home',
+  components: {},
+  computed: {
+    // ...mapGetters([
+    //   'name',
+    //   'avatar',
+    //   'roles'
+    // ])
+  },
   data() {
     return {
-      list: [],
-      loading: false,
-      finished: false,
-      isLoading: false,
-      count: 0
+      images: [
+        require('../../assets/image/home/apple-1x180.png'),
+        require('../../assets/image/home/apple-2x180.png')
+      ]
     }
   },
-  methods: {
-    onLoad() {
-      this.$http.get("/user")
-          .then(res => {
-            if (res.code === 200) {
-              if (this.count !== 0) {
-                Toast("刷新成功");
-              }
-              this.count++;
-              this.list = res.data;
-            }
-            // 加载状态结束
-            this.loading = false;
-
-            // 数据全部加载完成
-            if (this.list.length >= 1) {
-              this.finished = true;
-            }
-          })
-    },
-    // // 滚动到底部
-    // scrollToBottom: function () {
-    //   this.$nextTick(() => {
-    //     let container = this.$el.querySelector(".content");
-    //     container.scrollTop = container.scrollHeight;
-    //   })
-    // },
+  created() {
+    // this.getInfo()
   },
-  // updated(){
-  //   this.scrollToBottom()
-  // }
+  methods: {
+    async getInfo() {
+      // const { roles } = await this.$store.dispatch('user/getInfo')
+      // console.log(roles);
+    }
+
+  }
 }
+
 </script>
 
 <style>
-.title {
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.van-pull-refresh {
-  height: 90%;
-}
-
-.van-pull-refresh /deep/ .van-pull-refresh__track {
-  height: inherit;
+.my-swipe .van-swipe-item {
+  color: #fff;
+  font-size: 20px;
+  line-height: 150px;
+  text-align: center;
+  background-color: #fff;
+  height: 160px;
+  padding-bottom: 50px;
+  padding-top: 30px;
 }
 </style>

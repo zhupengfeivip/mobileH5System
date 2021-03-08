@@ -19,8 +19,12 @@
         to="login"
       />
     </van-cell-group>
+    <van-cell-group title="功能界面">
+      <van-cell title="主界面一" value="内容" is-link to="home" />
+    </van-cell-group>
     <van-cell-group title="系统管理">
-      <van-cell title="操作员管理" value="内容" is-link to="login" />
+      <van-cell title="操作员管理" value="内容" is-link to="list1" />
+      <van-cell title="列表二" value="内容" is-link to="list2" />
     </van-cell-group>
   </div>
 </template>

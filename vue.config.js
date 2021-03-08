@@ -10,7 +10,7 @@ module.exports = {
             // 配置跨域处理 可以设置多个
             '/api': {
                 target:
-                    'http://localhost:3001/',
+                    'http://localhost:8080/',
                 ws: true,
                 changeOrigin: true
             }
